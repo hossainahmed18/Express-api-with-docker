@@ -19,7 +19,7 @@ const readFile = async ({ bucket, folder, client, fileName }) => {
     try{
         const response = await client.send(command);
         const { Body } = response;
-        const data = streamToString(Body);
+        const data = await streamToString(Body);
         return JSON.parse(data);
     }catch (error){
        return error;
@@ -30,7 +30,7 @@ const getFile = async (event) => {
     const region = '';
     const bucket = '';
     const folder = '';
-    const fileName = '';
+    const fileName = 'sample.json';  // it can only send a json
     const client = new S3Client({ region });
     return readFile({ bucket, fileName, folder, client });
 };
