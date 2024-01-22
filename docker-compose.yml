@@ -2,12 +2,17 @@ version: '3'
 services:
   sample-express-api-to-access-aws-resources:
     build:
-       dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile
     image: sample-express-api-to-access-aws-resources
     container_name: sample-express-api-to-access-aws-resources
     volumes:
-       - express-api-to-access-aws-resources:/app
+      - express-api-to-access-aws-resources:/app
+      - /Users/junayedcraftsmen/.aws:/root/.aws
     ports:
       - "3000:3000"
+    environment:
+      - AWS_PROFILE=eu-north-1-nonprod
+      - AWS_REGION=eu-north-1
+      
 volumes:
   express-api-to-access-aws-resources:
