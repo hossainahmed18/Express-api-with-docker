@@ -1,0 +1,13 @@
+version: '3'
+services:
+  sample-express-api-to-access-aws-resources:
+    build:
+       dockerfile: ./Dockerfile
+    image: sample-express-api-to-access-aws-resources
+    container_name: sample-express-api-to-access-aws-resources
+    volumes:
+       - express-api-to-access-aws-resources:/app
+    ports:
+      - "3000:3000"
+volumes:
+  express-api-to-access-aws-resources:
